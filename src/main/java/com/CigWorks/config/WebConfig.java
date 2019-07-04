@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 import com.CigWorks.interceptor.BaseInterceptor;
 
+
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport  
 {

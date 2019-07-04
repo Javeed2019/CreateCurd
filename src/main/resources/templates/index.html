@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layouts/main">	
+	layout:decorator="~{layouts/main}">	
 <head>
 	<title>Blog Home Page</title>
 </head>
@@ -28,10 +28,10 @@
 				teaser
 			</section>
 			<footer>
-				<!-- <a th:href="|@{/posts/view/}${post.slug}|">Read More</a>
+				<a th:href="|@{/posts/view/}${post.slug}|">Read More</a>
 				<address>
 					Posted By <a th:href="|mailto:${post.author.email}|"> <span th:text="|${post.author.firstName} ${post.author.lastName}|">author</span></a>
-				</address> -->
+				</address>
 			</footer>
 			<hr/>
 		</article>

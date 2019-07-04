@@ -5,30 +5,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.CigWorks.service.AuthorSerivie;
+import com.CigWorks.service.AuthorService;
 
 @Controller
 @RequestMapping("/authors")
-public class AuthorController 
-{
+public class AuthorController {
+
+	private AuthorService authorService;
+
 	@Autowired
-	private AuthorSerivie servies;
+	public AuthorController(AuthorService authorService) {
+		super();
+		this.authorService = authorService;
+	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("authors", servies.list());
+	public String list(Model model){
+		model.addAttribute("authors", authorService.list());
 		return "author/list";
 	}
 	
 	@RequestMapping("/view")
-	public String view(Model model) {
+	public String view(Model model){
 		return "author/view";
 	}
-
-	@RequestMapping("/create")
-	public String create(Model model)
-	{
-		return "";
-	}
-	
 }

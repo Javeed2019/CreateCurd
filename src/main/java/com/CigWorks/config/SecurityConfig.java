@@ -8,26 +8,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity( securedEnabled = true )
 @Order(SecurityProperties.BASIC_AUTH_ORDER)
-public class SecurityConfig extends WebSecurityConfigurerAdapter
-{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception
-	{
-		 http
-		 	.csrf().disable()
-		 	.authorizeRequests()
-		 		.antMatchers("/admin/**").hasRole("ADMIN")
-		 		.anyRequest().permitAll()
-		 		.and()
-		 	.formLogin()
-		 		.loginPage("/login")
-		 		.permitAll()
-		 		.and()
-		 	.logout()
-		 		.logoutSuccessUrl("/login?logout")
-		 		.permitAll();
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+			.authorizeRequests()
+				.antMatchers("/admin/").hasRole("ADMIN")
+				.anyRequest().permitAll()
+				.and()
+			.formLogin()
+				.loginPage("/login")
+				.permitAll()
+				.and()
+			.logout()
+				.logoutSuccessUrl("/login?logout")
+				.permitAll();
 	}
-
+	
 }

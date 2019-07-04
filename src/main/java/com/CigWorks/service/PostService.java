@@ -5,62 +5,47 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.CigWorks.Dao.PostDao;
-import com.CigWorks.model.Post;
-import com.CigWorks.request.PostRequest;
+import com.CigWorks.domain.Post;
+import com.CigWorks.repository.PostRepository;
 
 @Service
 public class PostService {
+
+	private PostRepository postRepository;
 	
 	@Autowired
-	private PostDao postDao;
-
-	
-	public Post getLatesPosts()
-	{
-		return postDao.findFirstByOrderByPostedOnDesc();
+	public PostService(PostRepository postRepository){
+		this.postRepository = postRepository;
 	}
 	
-	public List<Post> list()
-	{
-		return postDao.findAllByOrderByPostedOnDesc();
-	}
-	
-	public Post getBySlug(String slug)
-	{
-		return postDao.findBySlug(slug);
-	}
-	
-	public List<Post> listByAuthor(long id)
-	{
-		return postDao.findAllByAuthorIdOrderByPostedOnDesc(id);
+	public Post getLatestPost(){
+		return postRepository.findFirstByOrderByPostedOnDesc();
 	}
 
-	public Post get(long id) {
-		
-		return postDao.findById(id);
+	public List<Post> list() {
+		return postRepository.findAllByOrderByPostedOnDesc();
+	}
+
+	public Post getBySlug(String slug) {
+		return postRepository.findBySlug(slug);
+	}
+
+	public List<Post> listByAuthor(Long id) {
+		return postRepository.findAllByAuthorIdOrderByPostedOnDesc(id);
+	}
+
+	public Object get(Long id) {
+		return postRepository.findById(id);
+	}
+
+	public Post save(Post post) {
+		return postRepository.save(post);
 	}
 	
 	public List<Post> AllDetails()
 	{
 		List<Post> post = null;
-		post =(List<Post>) postDao.findAll();
+		post =(List<Post>) postRepository.findAll();
 		return  post;
 	}
-
-	public Post save(Post post) {
-		
-		return postDao.save(post);
-	}
-
-	public PostRequest save(PostRequest post) {
-		// TODO Auto-generated method stub
-		return postDao.save(post);
-	}
-	
-	public Post delete(long id)
-	{
-		return postDao.deleteById(id);
-	}
 }
-

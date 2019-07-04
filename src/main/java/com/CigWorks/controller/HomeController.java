@@ -1,4 +1,3 @@
-
 package com.CigWorks.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,23 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.CigWorks.service.PostService;
 
 @Controller
-public class HomeController 
-{
+public class HomeController {
+	
+	private PostService postService;
+	
 	@Autowired
-	private PostService PostService;
-
-	@RequestMapping("/")
-	public String home(Model model)
-	{
-		model.addAttribute("post", PostService.getLatesPosts());
-		return "index";
+	public HomeController(PostService postService){
+		this.postService = postService;
 	}
 	
-//	@RequestMapping("/login")
-//	public String login()
-//	{
-//		return "auth/login";
-//	}
-	
+	@RequestMapping("/")
+	public String home(Model model){
+		model.addAttribute("post", postService.getLatestPost());
+		return "index";
+	}
 	
 }

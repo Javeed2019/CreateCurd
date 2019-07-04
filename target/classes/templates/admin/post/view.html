@@ -31,30 +31,24 @@
 					<p class="form-control-static" th:text="${#calendars.format(post.postedOn, 'M/dd/yyyy hh:mm:ss a')}">postedOn</p>
 				</div>
 			</div>
-			 <div class="form-group">
+			<div class="form-group">
 		    	<label class="col-sm-2 control-label">Keywords</label>
 		    	<div class="col-md-10">
 		    		<p class="form-control-static" th:text="${post.keywords}">keywords</p>
 		    	</div>
-		  	</div> 
+		  	</div>
 		  	<div class="form-group">
 		    	<label class="col-sm-2 control-label">Active</label>
 		    	<div class="col-md-10">
 		    		<p class="form-control-static" th:text="${post.active}">active</p>
 		    	</div>
 		  	</div>
-			<!-- <div class="form-group">
+			<div class="form-group">
 		    	<label class="col-sm-2 control-label">Author</label>
 		    	<div class="col-md-10">
 		    		<p class="form-control-static" th:text="${post.author.lastName + ', ' + post.author.firstName}">author</p>
 		    	</div>
-		  	</div> -->		
-		  	<div class="form-group">
-				<label class="col-sm-2 control-label">Author Name</label>
-				<div class="col-md-10">
-					<p class="form-control-static" th:text="${post.authornName}">teaser</p>
-				</div>
-			</div>  	
+		  	</div>		  	
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Teaser</label>
 				<div class="col-md-10">

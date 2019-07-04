@@ -10,28 +10,32 @@ import com.CigWorks.service.PostService;
 
 @Controller
 @RequestMapping("/posts")
-public class PostController 
-{
+public class PostController {
+	
+	private PostService postService;
+	
 	@Autowired
-	private PostService Service;
+	public PostController(PostService postService) {
+		super();
+		this.postService = postService;
+	}
 
 	@RequestMapping("/list")
-	public String list(Model model)
-	{
-		model.addAttribute("posts", Service.list());
+	public String list(Model model) {
+		model.addAttribute("posts", postService.list());
 		return "post/list";
 	}
 	
 	@RequestMapping("/view/{slug}")
-	public String view(@PathVariable(value = "slug") String slug,Model model) {
-		model.addAttribute("post", Service.getBySlug(slug));
+	public String view(@PathVariable(value="slug") String slug, Model model){
+		model.addAttribute("post", postService.getBySlug(slug));
 		return "post/view";
 	}
 	
 	@RequestMapping("/byAuthor/{id}")
-	public String byAuthor(@PathVariable(value = "id") long id,Model model)
-	{
-		model.addAttribute("posts",Service.listByAuthor(id));
+	public String byAuthor(@PathVariable(value="id") Long id, Model model){
+		model.addAttribute("posts", postService.listByAuthor(id));
 		return "post/list";
 	}
 }
+

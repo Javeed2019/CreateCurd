@@ -17,10 +17,7 @@
 					<th>First Name</th> 
 					<th>Last Name</th> 
 					<th>Email</th> 
-				<!-- 	<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th> -->
-					<!-- <th>Posts By Author</th> -->
+					<th>Posts By Author</th>
 				</tr> 
 			</thead>
 			<tbody>
@@ -29,16 +26,11 @@
 					<td th:text="${author.firstName}">First Name</td>
 					<td th:text="${author.lastName}">Last Name</td>
 					<td th:text="${author.email}">Email Address</td>
-					<!-- <td><a href="#" th:href="@{/admin/author/} + ${author.id}">View</a></td>
-					<td><a href="#" th:href="@{/admin/author/edit/} + ${author.id}">Edit</a></td>
-					<td><a href="#" th:href="@{/admin/author/delete/}+ ${author.id}">Delete</a></td> -->
-					<!-- <td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td> -->
+					<td><a th:href="|/posts/byAuthor/${author.id}|">Posts By Author</a></td>
 				</tr>
 			</tbody>
 		</table>
 
-		
-		<br/><br/>
 	</div>
 		
 </body>
